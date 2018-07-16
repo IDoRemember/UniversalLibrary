@@ -1,6 +1,7 @@
 # UniversalLibrary
 陈钰涵的一些通用函数
-1. storageCrossPage.js介绍
+### 1. storageCrossPage.js介绍
+
 **通过点击链接（或者用了 window.open）打开的新标签页之间是属于同一个 sessionStorage 的，
 但新开一个标签页总是会初始化一个新的 sessionStorage，即使网站是一样的，它们也不属于同一个 sessionStorage。**
 那么，如何在新开一个标签页之后仍然要共享sessionStorage呢？
