@@ -44,14 +44,27 @@
 传递过来的sessionStorage绝对不会保存在localStorage，从localStorage事件将数据中复制并保存到sessionStorage，这个流程是在同一个调用中完成，没有中间状态。而且数据是对应事件携带的，并不在localStorage中。
 ### 2. chunk 介绍
 将数组块划分为指定大小的较小数组。
-
 使用Array.from()创建新的数组, 这符合将生成的区块数。使用Array.slice()将新数组的每个元素映射到size长度的区块。如果原始数组不能均匀拆分,则最终的块将包含剩余的元素。
 `chunk([1,2,3,4,5], 2) -> [[1,2],[3,4],[5]]`
-
+```javascript
+function chunk(arr, size) {
+  Array.from({
+      length: Math.ceil(arr.length / size)
+  },(v ,i)=>(arr.slice(i * size, i * size + size)));
+}
+```
 ### 3. compact
 从数组移除falsey的值
 使用`Array.filter()`筛选出 `falsey` 值 (false、null、0、""、undefined和NaN).
+```javascript
+function compact(arr) {
+  return arr.filter(Boolean);
+}
+```
 
 ### 4. filterUnique
 筛选出数组中的非唯一值。
 对于只包含唯一值的数组, 请使用Array.filter()。
+```javascript
+const filterUnique = arr => arr.filter(i => arr.indexOf(i) === arr.lastIndexOf(i));
+```
